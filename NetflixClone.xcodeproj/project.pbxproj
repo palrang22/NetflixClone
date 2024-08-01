@@ -12,6 +12,8 @@
 		E797FD302C5B730400D6ABE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E797FD2F2C5B730400D6ABE6 /* ViewController.swift */; };
 		E797FD352C5B730600D6ABE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E797FD342C5B730600D6ABE6 /* Assets.xcassets */; };
 		E797FD382C5B730600D6ABE6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E797FD372C5B730600D6ABE6 /* Base */; };
+		E797FD452C5B760E00D6ABE6 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E797FD442C5B760E00D6ABE6 /* Movie.swift */; };
+		E797FD472C5B761700D6ABE6 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = E797FD462C5B761700D6ABE6 /* Video.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		E797FD372C5B730600D6ABE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E797FD392C5B730600D6ABE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E797FD3F2C5B734200D6ABE6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E797FD442C5B760E00D6ABE6 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		E797FD462C5B761700D6ABE6 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,10 @@
 		E797FD2A2C5B730400D6ABE6 /* NetflixClone */ = {
 			isa = PBXGroup;
 			children = (
+				E797FD402C5B75D500D6ABE6 /* App */,
+				E797FD412C5B75E100D6ABE6 /* Model */,
+				E797FD422C5B75E600D6ABE6 /* View */,
+				E797FD432C5B75EA00D6ABE6 /* ViewModel */,
 				E797FD2B2C5B730400D6ABE6 /* AppDelegate.swift */,
 				E797FD2D2C5B730400D6ABE6 /* SceneDelegate.swift */,
 				E797FD2F2C5B730400D6ABE6 /* ViewController.swift */,
@@ -64,6 +72,36 @@
 				E797FD3F2C5B734200D6ABE6 /* Config.xcconfig */,
 			);
 			path = NetflixClone;
+			sourceTree = "<group>";
+		};
+		E797FD402C5B75D500D6ABE6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E797FD412C5B75E100D6ABE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E797FD442C5B760E00D6ABE6 /* Movie.swift */,
+				E797FD462C5B761700D6ABE6 /* Video.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E797FD422C5B75E600D6ABE6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E797FD432C5B75EA00D6ABE6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +176,9 @@
 			files = (
 				E797FD302C5B730400D6ABE6 /* ViewController.swift in Sources */,
 				E797FD2C2C5B730400D6ABE6 /* AppDelegate.swift in Sources */,
+				E797FD452C5B760E00D6ABE6 /* Movie.swift in Sources */,
 				E797FD2E2C5B730400D6ABE6 /* SceneDelegate.swift in Sources */,
+				E797FD472C5B761700D6ABE6 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

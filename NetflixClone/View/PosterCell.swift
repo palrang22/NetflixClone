@@ -34,7 +34,7 @@ class PosterCell: UICollectionViewCell {
         let urlString = "https://image.tmdb.org/t/p/w500/\(posterPath).jpg"
         guard let url = URL(string: urlString) else { return }
         
-        DispatchQueue.global().async { [weak self] _ in
+        DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {

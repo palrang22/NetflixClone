@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import AVKit
 
 class MainViewController: UIViewController {
     
@@ -121,6 +122,18 @@ class MainViewController: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
+    
+    private func playVideoUrl() {
+        // 유튜브 url은 정책상 바로 재생할 수 없으므로 임의의 url 넣어 구현만
+        let url = URL(string: "https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")!
+        let player = AVPlayer(url: url)
+        let playerViewController = AVPlayerViewController()
+        
+        playerViewController.player = player
+        present(playerViewController, animated: true) {
+            player.play()
+        }
+    }
 }
 
 enum Section: Int, CaseIterable {
@@ -138,7 +151,39 @@ enum Section: Int, CaseIterable {
 }
 
 extension MainViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch Section(rawValue: indexPath.section) {
+        case .PopularMovies:
+            viewModel.fetchTrailerKey(movie: popularMovies[indexPath.row])
+                .observe(on: MainScheduler.instance)
+                .subscribe(onSuccess: { [weak self] key in
+                    self?.playVideoUrl()
+                }, onFailure: {error in
+                    print("에러 발생: \(error)")
+                }).disposed(by: disposeBag)
+            
+        case .TopRatedMovies:
+            viewModel.fetchTrailerKey(movie: topRatedMovies[indexPath.row])
+                .observe(on: MainScheduler.instance)
+                .subscribe(onSuccess: { [weak self] key in
+                    self?.playVideoUrl()
+                }, onFailure: { error in
+                    print("에러 발생: \(error)")
+                }).disposed(by: disposeBag)
+            
+        case .UpcomingMovies:
+            viewModel.fetchTrailerKey(movie: upcomingMovies[indexPath.row])
+                .observe(on: MainScheduler.instance)
+                .subscribe(onSuccess: { [weak self] key in
+                    self?.playVideoUrl()
+                }, onFailure: { error in
+                    print("에러 발생: \(error)")
+                }).disposed(by: disposeBag)
+            
+        default:
+            return
+        }
+    }
 }
 
 extension MainViewController: UICollectionViewDataSource {

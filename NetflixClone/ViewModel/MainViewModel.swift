@@ -74,4 +74,23 @@ class MainViewModel {
                 self?.upcomingMovieSubject.onError(error)
             }).disposed(by: disposeBag)
     }
+    
+    func fetchTrailerKey(movie: Movie) -> Single<String> {
+        guard let apiKey = apiKey, let movieId = movie.id else { return Single.error(NetworkError.dataFetchFail)}
+        let urlString = "https://api.themoviedb.org/3/movie/\(movieId)/videos?api_key=\(apiKey)"
+        guard let url = URL(string: urlString) else {
+            return Single.error(NetworkError.invalidUrl)
+        }
+        
+        return NetworkManager.shared.fetch(url: url) // 여기까지만 보면 리턴타입이 Single<VideoResponse>
+            // Single의 리턴타입을 변경해주고 싶을 때, flatMap을 활용해 리턴타입을 String으로 변경
+            .flatMap { (VideoResponse: VideoResponse) -> Single<String> in
+                if let trailer = VideoResponse.results.first(where: {$0.type == "Trailer" && $0.site == "YouTube"}) {
+                    guard let key = trailer.key else { return Single.error(NetworkError.dataFetchFail) }
+                    return Single.just(key) // key를 활용해 예고편 영상을 틀 수 있다
+                } else {
+                    return Single.error(NetworkError.dataFetchFail)
+                }
+            }
+    }
 }

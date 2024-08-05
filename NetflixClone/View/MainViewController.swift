@@ -137,15 +137,15 @@ class MainViewController: UIViewController {
 }
 
 enum Section: Int, CaseIterable {
-    case PopularMovies
-    case TopRatedMovies
-    case UpcomingMovies
+    case popularMovies
+    case topRatedMovies
+    case upcomingMovies
     
     var title: String {
         switch self {
-        case.PopularMovies: return "이시간 핫한 영화"
-        case.TopRatedMovies: return "평점이 가장 높은 영화"
-        case.UpcomingMovies: return "곧 개봉되는 영화"
+        case.popularMovies: return "이시간 핫한 영화"
+        case.topRatedMovies: return "평점이 가장 높은 영화"
+        case.upcomingMovies: return "곧 개봉되는 영화"
         }
     }
 }
@@ -153,31 +153,34 @@ enum Section: Int, CaseIterable {
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch Section(rawValue: indexPath.section) {
-        case .PopularMovies:
+        case .popularMovies:
             viewModel.fetchTrailerKey(movie: popularMovies[indexPath.row])
                 .observe(on: MainScheduler.instance)
                 .subscribe(onSuccess: { [weak self] key in
-                    self?.playVideoUrl()
+                    // self?.playVideoUrl()
+                    self?.navigationController?.pushViewController(YoutubeViewController(key: key), animated: true)
                 }, onFailure: {error in
-                    print("에러 발생: \(error)")
+                    print("에러 발생: 33\(error)")
                 }).disposed(by: disposeBag)
             
-        case .TopRatedMovies:
+        case .topRatedMovies:
             viewModel.fetchTrailerKey(movie: topRatedMovies[indexPath.row])
                 .observe(on: MainScheduler.instance)
                 .subscribe(onSuccess: { [weak self] key in
-                    self?.playVideoUrl()
+                    // self?.playVideoUrl()
+                    self?.navigationController?.pushViewController(YoutubeViewController(key: key), animated: true)
                 }, onFailure: { error in
-                    print("에러 발생: \(error)")
+                    print("에러 발생: 22\(error)")
                 }).disposed(by: disposeBag)
             
-        case .UpcomingMovies:
+        case .upcomingMovies:
             viewModel.fetchTrailerKey(movie: upcomingMovies[indexPath.row])
                 .observe(on: MainScheduler.instance)
                 .subscribe(onSuccess: { [weak self] key in
-                    self?.playVideoUrl()
+                    // self?.playVideoUrl()
+                    self?.navigationController?.pushViewController(YoutubeViewController(key: key), animated: true)
                 }, onFailure: { error in
-                    print("에러 발생: \(error)")
+                    print("에러 발생: 11\(error)")
                 }).disposed(by: disposeBag)
             
         default:
@@ -190,9 +193,9 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch Section(rawValue: section) {
-        case .PopularMovies: return popularMovies.count
-        case .TopRatedMovies: return topRatedMovies.count
-        case .UpcomingMovies: return upcomingMovies.count
+        case .popularMovies: return popularMovies.count
+        case .topRatedMovies: return topRatedMovies.count
+        case .upcomingMovies: return upcomingMovies.count
         default:
             return 0
         }
@@ -205,11 +208,11 @@ extension MainViewController: UICollectionViewDataSource {
         }
         
         switch Section(rawValue: indexPath.section) {
-        case .PopularMovies:
+        case .popularMovies:
             cell.configure(with: popularMovies[indexPath.row])
-        case .TopRatedMovies:
+        case .topRatedMovies:
             cell.configure(with: topRatedMovies[indexPath.row])
-        case .UpcomingMovies:
+        case .upcomingMovies:
             cell.configure(with: upcomingMovies[indexPath.row])
         default:
             return UICollectionViewCell()

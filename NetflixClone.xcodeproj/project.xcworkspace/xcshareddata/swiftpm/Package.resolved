@@ -1,5 +1,5 @@
 {
-  "originHash" : "969213bdc0ec4b85cbd405b9e9b3c72ef1bb7e07bbc78462ae07579a98d4aa71",
+  "originHash" : "9f2fb58c5aced74344296077236c70b48e11690a5abbd288952c4e860584da8c",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "2842e6e84e82eb9a8dac0100ca90d9444b0307f4",
         "version" : "5.7.1"
+      }
+    },
+    {
+      "identity" : "youtube-ios-player-helper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/youtube/youtube-ios-player-helper.git",
+      "state" : {
+        "revision" : "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
+        "version" : "1.0.4"
       }
     }
   ],

@@ -22,6 +22,7 @@
 		E797FD582C5B86AE00D6ABE6 /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E797FD572C5B86AE00D6ABE6 /* YoutubeViewController.swift */; };
 		E797FD5A2C5CCC4900D6ABE6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E797FD592C5CCC4900D6ABE6 /* MainViewModel.swift */; };
 		E797FD5D2C5CCF7D00D6ABE6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E797FD5C2C5CCF7D00D6ABE6 /* NetworkManager.swift */; };
+		E797FD602C6062A300D6ABE6 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = E797FD5F2C6062A300D6ABE6 /* YouTubeiOSPlayerHelper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 				E797FD502C5B793000D6ABE6 /* Alamofire in Frameworks */,
 				E797FD4A2C5B78D000D6ABE6 /* RxSwift in Frameworks */,
 				E797FD4D2C5B790000D6ABE6 /* SnapKit in Frameworks */,
+				E797FD602C6062A300D6ABE6 /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +155,7 @@
 				E797FD492C5B78D000D6ABE6 /* RxSwift */,
 				E797FD4C2C5B790000D6ABE6 /* SnapKit */,
 				E797FD4F2C5B793000D6ABE6 /* Alamofire */,
+				E797FD5F2C6062A300D6ABE6 /* YouTubeiOSPlayerHelper */,
 			);
 			productName = NetflixClone;
 			productReference = E797FD282C5B730400D6ABE6 /* NetflixClone.app */;
@@ -186,6 +189,7 @@
 				E797FD482C5B78D000D6ABE6 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				E797FD4B2C5B790000D6ABE6 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E797FD4E2C5B793000D6ABE6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E797FD5E2C6062A300D6ABE6 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 			);
 			productRefGroup = E797FD292C5B730400D6ABE6 /* Products */;
 			projectDirPath = "";
@@ -463,6 +467,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		E797FD5E2C6062A300D6ABE6 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -480,6 +492,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E797FD4E2C5B793000D6ABE6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		E797FD5F2C6062A300D6ABE6 /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E797FD5E2C6062A300D6ABE6 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

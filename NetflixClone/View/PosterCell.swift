@@ -12,7 +12,7 @@ class PosterCell: UICollectionViewCell {
     
     let imageView : UIImageView = {
         let imageview = UIImageView()
-        imageview.contentMode = .scaleAspectFit
+        imageview.contentMode = .scaleAspectFill
         imageview.clipsToBounds = true
         imageview.backgroundColor = .darkGray
         imageview.layer.cornerRadius = 10
@@ -27,6 +27,12 @@ class PosterCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // 새롭게 재활용되기 전에 어떤 로직을 수행할 것인가 - 재활용될 때 이미지뷰를 한번 비우므로 버벅임이 사라짐
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
     }
     
     func configure(with Movie: Movie) {

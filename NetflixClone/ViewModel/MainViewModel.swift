@@ -32,7 +32,7 @@ class MainViewModel {
     /// Popular Movie 데이터를 불러옴
     /// ViewModel에서 수행해야 할 비즈니스 로직
     func fetchPopularMovie() {
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)") else {
+        guard let apiKey = apiKey, let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)") else {
             popularMovieSubject.onError(NetworkError.invalidUrl)
             return
         }
@@ -48,7 +48,7 @@ class MainViewModel {
     }
     
     func fetchTopRatedMovie() {
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=\(apiKey)") else {
+        guard let apiKey = apiKey, let url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=\(apiKey)") else {
             topRatedMovieSubject.onError(NetworkError.invalidUrl)
             return
         }
@@ -62,7 +62,7 @@ class MainViewModel {
     }
     
     func fetchUpcomingMovie() {
-        guard let url = URL(string: "https://api.themoviedb.org/3/tv/popular?api_key=\(apiKey)") else {
+        guard let apiKey = apiKey, let url = URL(string: "https://api.themoviedb.org/3/tv/popular?api_key=\(apiKey)") else {
             upcomingMovieSubject.onError(NetworkError.invalidUrl)
             return
         }

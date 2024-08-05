@@ -93,7 +93,18 @@ class MainViewController: UIViewController {
         section.interGroupSpacing = 10 // 그룹 사이의 간격
         section.contentInsets = .init(top: 10, leading: 10, bottom: 20, trailing: 10) // section간의 inset
         
-        return UICollectionViewLayout()
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(44)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        section.boundarySupplementaryItems = [header]
+        
+        return UICollectionViewCompositionalLayout(section: section)
     }
     
     private func configUI() {
@@ -173,5 +184,10 @@ extension MainViewController: UICollectionViewDataSource {
         let sectionType = Section.allCases[indexPath.section]
         headerView.configure(with: sectionType.title)
         return headerView
+    }
+    
+    // collection view section 몇개인지 설정
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return Section.allCases.count
     }
 }
